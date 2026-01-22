@@ -53,14 +53,14 @@ for dirpath, dirnames, fnames in subfolders:
 
     Image.open(target_names[0])
 
-    # ✅【新增】调整 source 和 mask 的大小以与 target 对齐
+    # 调整 source 和 mask 的大小以与 target 对齐
     if source_img.shape[:2] != target_img.shape[:2]:
         print("🔄 Resizing source and mask to match target size...")
         target_h, target_w = target_img.shape[:2]
         source_img = cv2.resize(source_img, (target_w, target_h), interpolation=cv2.INTER_LINEAR)
         mask = cv2.resize(mask, (target_w, target_h), interpolation=cv2.INTER_NEAREST)
 
-    # ✅【修改】按对齐后的尺寸提取掩码 patch 区域
+    # 按对齐后的尺寸提取掩码 patch 区域
     ys, xs = np.where(mask > 0)
     if len(ys) == 0 or len(xs) == 0:
         print("❌ 掩码为空，跳过该 case\n")
@@ -95,3 +95,4 @@ for dirpath, dirnames, fnames in subfolders:
 
     cv2.imwrite(os.path.join(output_dir, "result.png"), result)
     print("Finishing processing input{i}.".format(i=image_dir))
+
