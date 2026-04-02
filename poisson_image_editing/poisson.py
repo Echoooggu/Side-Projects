@@ -6,13 +6,13 @@ inside = 0
 edge = 1
 outside = 2
 
-def get_surrounding_coordinates(index):     #给定index，返回四个邻近索引
+def get_surrounding_coordinates(index):     
     i, j = index
     return [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]
 
-def mask_nonzero_indicies(mask):        #返回给定图像（此处是为了掩码）中非零区域的所有坐标
-    nonzero = np.nonzero(mask) #返回一个元组，每个元素是一个数组array，每个array存的是每个维度上的索引
-    return list(zip(nonzero[0], nonzero[1])) #把两个维度的数组组合成坐标形式，这里返回的是所有点
+def mask_nonzero_indicies(mask):        
+    nonzero = np.nonzero(mask) 
+    return list(zip(nonzero[0], nonzero[1])) 
 
 def lapl_at_index(source, index):
     i, j = index
@@ -71,7 +71,7 @@ def process(source, target, mask):
     return result.astype(np.uint8)
 
 # def process(source, target, mask):
-#     binary_mask = (mask > 0).astype(np.uint8) # 二值化的mask
+#     binary_mask = (mask > 0).astype(np.uint8) 
 #     source = source.astype(np.float64)
 #     target = target.astype(np.float64)
 #
