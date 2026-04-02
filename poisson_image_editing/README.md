@@ -1,11 +1,8 @@
-# 1st project: poisson image editing
+# Poisson Image Editing
 
 ## Descriptions
 Ten cases, each with a provided source image, a target image, and potentially a mask image. If there is no mask, then draw a mask by mouse through a popped-out window.  
 Cannot manipulate where to blend the image in the target. The python files use mixed-gradient blending, and therefore only suit some types of images.
-
-## Basic knowledge required
-numpy, opencv  
 
 ## Algorithms（*mixed*-gradient blending)
 **Seamless image fusion with mixed gradients (preserving dominant structures from either source or target). A functional optimization problem that seeks a function whose gradient closely approximates the maximum of the gradient of the source image and that of the target image.**  
