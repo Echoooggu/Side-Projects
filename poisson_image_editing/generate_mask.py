@@ -26,10 +26,8 @@ def interactive_generate_mask(source_path, mask_save_path):
             cv2.line(clone, points[-1], points[0], (0, 0, 255), 2)
             cv2.line(mask, points[-1], points[0], 255, 2)
 
-            # 自动填充轮廓内部
-            # 使用多边形填充掩码
             cv2.fillPoly(mask, [np.array(points)], 255)
-            print("✅ 掩码绘制完成，按 's' 保存，或 'r' 重画")
+            print("Mask drawn，'s' for saving，'r' for redraw")
 
     cv2.namedWindow('Draw Mask')
     cv2.startWindowThread()
@@ -43,14 +41,14 @@ def interactive_generate_mask(source_path, mask_save_path):
 
         if key == ord('s'):
             cv2.imwrite(mask_save_path, mask)
-            print(f"✅ 掩码已保存至 {mask_save_path}")
+            print(f"mask saved to {mask_save_path}")
             break
         elif key == ord('r'):
             clone = source.copy()
             mask[:] = 0
-            print("🔁 重置绘制")
-        elif key == ord('q'):# Ctrl+q的ASCII码
-            print("❌ 用户取消绘制")
+            print("redrawing")
+        elif key == ord('q'):
+            print("drawing cancelled")
             break
 
     cv2.destroyAllWindows()
